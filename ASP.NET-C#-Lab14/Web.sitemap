@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+  <siteMapNode url="~/" title="Home" description="Attendance System Home">
+    <siteMapNode url="~/Forms/Attendance/AttendanceTOC.aspx" title="Attendance" description="Work with Attendance">
+      <siteMapNode url="~/Forms/Attendance/AttendanceEdit.aspx" title="Edit" description="Add and Change Attendance"/>
+      <siteMapNode url="~/Forms/Attendance/AttendanceList.aspx" title="List" description="Get a Listing of Attendanc"/>
+    </siteMapNode>
+    <siteMapNode url="~/Forms/Sections/SectionsTOC.aspx" title="Sections" description="Work with Sections">
+      <siteMapNode url="~/Forms/Sections/SectionsEdit.aspx" title="Edit" description="Add and Change Sections"/>
+      <siteMapNode url="~/Forms/Sections/SectionsList.aspx" title="List" description="Get a Listing of Section"/>
+    </siteMapNode>
+    <siteMapNode url="~/Forms/Students/StudentsTOC.aspx" title="Students" description="Work with Students">
+      <siteMapNode url="~/Forms/Students/StudentsEdit.aspx" title="Edit" description="Add and Change Students"/>
+      <siteMapNode url="~/Forms/Students/StudentsList.aspx" title="List" description="Get a Listing of Student"/>
+    </siteMapNode>
+    <siteMapNode url="~/Forms/Reports/Reports.aspx" title="Reports" description="Work with Reports">
+    </siteMapNode>
+  </siteMapNode>
+</siteMap>

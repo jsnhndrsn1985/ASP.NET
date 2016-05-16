@@ -1,0 +1,54 @@
+﻿body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e6ccff;
+}
+
+
+.Table
+{
+    padding: 4px;
+    empty-cells: show;
+    border-spacing: 2px;
+
+}
+
+.Textbox
+{
+    font-family: 'Courier New', Courier, monospace;
+    text-align: right;
+    width: 120px;
+}
+
+.Panel
+{
+    border: 2px solid #808000;
+    background-color: #CCFFCC;
+     width: 400px;
+ 
+}
+
+.ImageButton
+{
+    border-width: 2px;
+    border-color: #808000;
+    margin-left: 8px;
+}
+
+.ListBox
+{
+    border-width: 2px;
+    border-color: #808000;
+    margin-left: 8px;
+}
+
+.LabelTime
+{
+    font-size: 10px;
+    font-style: italic;
+}
+
+.Label
+{
+    font-size: 12px;
+}

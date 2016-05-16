@@ -1,0 +1,2 @@
+﻿
+<asp:Image SkinID="LogoImage" runat="server" ImageUrl="~/App_Themes/Normal/Images/StudentGreen32.png" />

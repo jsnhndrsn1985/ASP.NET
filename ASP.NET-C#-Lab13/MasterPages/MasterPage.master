@@ -1,0 +1,64 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPages_MasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Attendance System</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table>
+                <tr class="MasterHeader">
+                    <td class="MasterHeaderLogo">
+                        <asp:Image ID="imgLogo" SkinID="LogoImage" runat="server" />
+                    </td>
+                    <td class="MasterHeaderUser">
+                        <div style="float: left">
+                            <h3>Attendance System</h3>
+                        </div>
+                        <div style="float: right">
+                            &nbsp;
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MasterMenu">
+                        <%-- Tree view goes here --%>
+                        <asp:TreeView ID="trvMenu" DataSourceID="SiteMapDataSource1" runat="server" ImageSet="Arrows" ShowLines="True" OnTreeNodeDataBound="trvMenu_TreeNodeDataBound">
+                            <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                            <LevelStyles>
+                                <asp:TreeNodeStyle CssClass="FirstLevelMenuItems" />
+                            </LevelStyles>
+                            <NodeStyle CssClass="NavNodeStyle" />
+                            <ParentNodeStyle Font-Bold="False" />
+                            <SelectedNodeStyle CssClass="NavSelectedNode" />
+                        </asp:TreeView>                        
+                          <%-- SiteMapDataSource goes here --%>
+                        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                    </td>
+                    <td class="MasterBody" style="vertical-align: top;">
+                        <%-- SitePathMap goes here --%>
+                        <asp:Panel ID="panSiteMapPath" CssClass="MasterSiteMapPathPanel" runat="server">
+                            <asp:SiteMapPath ID="SiteMapPath1" runat="server" Font-Names="Verdana" Font-Size="0.8em" PathSeparator=" -> ">
+                                <CurrentNodeStyle CssClass="NavSelectedNode" />
+                                <NodeStyle ForeColor="#666666" />
+                                <PathSeparatorStyle ForeColor="#1C5E55" />
+                                <RootNodeStyle ForeColor="#1C5E55" />
+                            </asp:SiteMapPath>
+                        </asp:Panel>
+                        <br />
+                        <asp:ContentPlaceHolder ID="Body" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="MasterFooter">
+                        <asp:Label ID="lblFooterRight" SkinID="FooterText" Text="Lab 13 LINQ and ADO.NET - Jason Henderson" runat="server"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd64dd3821784c3498ed037b31536e02" Name="Diagram1">
+        <EntityTypeShape EntityType="Lab13Model.Attendance" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Lab13Model.Calendar" Width="1.5" PointX="0.75" PointY="9.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Lab13Model.ClassMeeting" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Lab13Model.Registration" Width="1.5" PointX="6" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Lab13Model.Section" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="Lab13Model.Student" Width="1.5" PointX="0.75" PointY="11.625" IsExpanded="true" />
+        <AssociationConnector Association="Lab13Model.FK_ClassMeeting_Attendance" ManuallyRouted="false" />
+        <AssociationConnector Association="Lab13Model.FK_ClassMeeting_Calendar" ManuallyRouted="false" />
+        <AssociationConnector Association="Lab13Model.FK_ClassMeeting_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="Lab13Model.FK_ClassMeeting_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="Lab13Model.FK_Registration_Section" ManuallyRouted="false" />
+        <AssociationConnector Association="Lab13Model.FK_Registration_Student" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

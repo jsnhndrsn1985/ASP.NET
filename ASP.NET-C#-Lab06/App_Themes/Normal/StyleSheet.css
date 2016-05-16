@@ -1,0 +1,121 @@
+﻿body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFFCC;
+}
+
+/*  
+    
+     Master Page Stuff 
+    
+    */
+
+
+.MasterTable
+{
+    width: 844px;
+    background-color: #CCFFCC;
+    color: #339966;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.MasterHeader
+{
+    width: 844px;
+    background-color: #CCFFCC;
+    vertical-align: middle;
+}
+
+.MasterHeaderLogo
+{
+    width: 120px;
+    text-align: center;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #808080;
+}
+
+.MasterHeaderUser
+{
+    width: 714px;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #808080;
+    vertical-align: middle;
+}
+
+.MasterMenu
+{
+    border-style: none solid none none;
+    border-width: 1px;
+    border-color: #808080;
+    background-color: #CCFFCC;
+    color: #339966;
+    width: 120px;
+    height: 400px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.MenuItem
+{
+    padding: 4px;
+    height: 20px;
+    text-align: center;
+}
+
+.MasterBody
+{
+    background-color: #CCFFCC;
+}
+
+.MasterFooter
+{
+    background-color: #CCFFCC;
+    border-style: solid none none none;
+    border-width: 1px;
+    border-color: #008000;
+    width: 844px;
+    height: 20px;
+}
+
+.MasterSiteMapPathPanel
+{
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-bottom-color: #006600;
+}
+
+
+
+.FirstLevelMenuItems
+{
+}
+
+.NavSelectedNode
+{
+    border: thin solid #008000;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.NavNodeStyle
+{
+    Font-Size: 8pt;
+    Padding: 0 5px 0 5px;
+    color: #000000;
+}
+
+
+.TOCHeader
+{
+    font-size: larger;
+    font-weight: bold;
+    color: #669999;
+}
+
+.TOCPanel
+{
+    margin: 10px;
+}

@@ -1,0 +1,471 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AttendanceModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="AttendanceModelStoreContainer">
+          <EntitySet Name="AppUser" EntityType="AttendanceModel.Store.AppUser" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Attendance" EntityType="AttendanceModel.Store.Attendance" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Calendar" EntityType="AttendanceModel.Store.Calendar" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ClassMeeting" EntityType="AttendanceModel.Store.ClassMeeting" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Registration" EntityType="AttendanceModel.Store.Registration" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Section" EntityType="AttendanceModel.Store.Section" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Student" EntityType="AttendanceModel.Store.Student" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ClassMeeting_Attendance" Association="AttendanceModel.Store.FK_ClassMeeting_Attendance">
+            <End Role="Attendance" EntitySet="Attendance" />
+            <End Role="ClassMeeting" EntitySet="ClassMeeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassMeeting_Calendar" Association="AttendanceModel.Store.FK_ClassMeeting_Calendar">
+            <End Role="Calendar" EntitySet="Calendar" />
+            <End Role="ClassMeeting" EntitySet="ClassMeeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassMeeting_Section" Association="AttendanceModel.Store.FK_ClassMeeting_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="ClassMeeting" EntitySet="ClassMeeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassMeeting_Student" Association="AttendanceModel.Store.FK_ClassMeeting_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ClassMeeting" EntitySet="ClassMeeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Section" Association="AttendanceModel.Store.FK_Registration_Section">
+            <End Role="Section" EntitySet="Section" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Student" Association="AttendanceModel.Store.FK_Registration_Student">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Registration" EntitySet="Registration" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="AppUserID" />
+          </Key>
+          <Property Name="AppUserID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="EMail" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nchar" Nullable="false" MaxLength="25" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="CalendarID" />
+          </Key>
+          <Property Name="CalendarID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClassMeeting">
+          <Key>
+            <PropertyRef Name="ClassMeetingID" />
+          </Key>
+          <Property Name="ClassMeetingID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CalendarID" Type="int" Nullable="false" />
+          <Property Name="SectionID" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="AttendanceID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SectionID" Type="int" Nullable="false" />
+          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="SectionID" />
+          </Key>
+          <Property Name="SectionID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CreditHours" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ScholarShip" Type="money" Nullable="false" />
+          <Property Name="Enrolled" Type="date" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ClassMeeting_Attendance">
+          <End Role="Attendance" Type="AttendanceModel.Store.Attendance" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.Store.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attendance">
+              <PropertyRef Name="AttendanceID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassMeeting_Calendar">
+          <End Role="Calendar" Type="AttendanceModel.Store.Calendar" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.Store.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendar">
+              <PropertyRef Name="CalendarID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="CalendarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassMeeting_Section">
+          <End Role="Section" Type="AttendanceModel.Store.Section" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.Store.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassMeeting_Student">
+          <End Role="Student" Type="AttendanceModel.Store.Student" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.Store.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Section">
+          <End Role="Section" Type="AttendanceModel.Store.Section" Multiplicity="1" />
+          <End Role="Registration" Type="AttendanceModel.Store.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Student">
+          <End Role="Student" Type="AttendanceModel.Store.Student" Multiplicity="1" />
+          <End Role="Registration" Type="AttendanceModel.Store.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AttendanceModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="AttendanceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AppUsers" EntityType="AttendanceModel.AppUser" />
+          <EntitySet Name="Attendances" EntityType="AttendanceModel.Attendance" />
+          <EntitySet Name="Calendars" EntityType="AttendanceModel.Calendar" />
+          <EntitySet Name="ClassMeetings" EntityType="AttendanceModel.ClassMeeting" />
+          <EntitySet Name="Registrations" EntityType="AttendanceModel.Registration" />
+          <EntitySet Name="Sections" EntityType="AttendanceModel.Section" />
+          <EntitySet Name="Students" EntityType="AttendanceModel.Student" />
+          <AssociationSet Name="FK_ClassMeeting_Attendance" Association="AttendanceModel.FK_ClassMeeting_Attendance">
+            <End Role="Attendance" EntitySet="Attendances" />
+            <End Role="ClassMeeting" EntitySet="ClassMeetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassMeeting_Calendar" Association="AttendanceModel.FK_ClassMeeting_Calendar">
+            <End Role="Calendar" EntitySet="Calendars" />
+            <End Role="ClassMeeting" EntitySet="ClassMeetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassMeeting_Section" Association="AttendanceModel.FK_ClassMeeting_Section">
+            <End Role="Section" EntitySet="Sections" />
+            <End Role="ClassMeeting" EntitySet="ClassMeetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClassMeeting_Student" Association="AttendanceModel.FK_ClassMeeting_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ClassMeeting" EntitySet="ClassMeetings" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Section" Association="AttendanceModel.FK_Registration_Section">
+            <End Role="Section" EntitySet="Sections" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registration_Student" Association="AttendanceModel.FK_Registration_Student">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Registration" EntitySet="Registrations" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AppUser">
+          <Key>
+            <PropertyRef Name="AppUserID" />
+          </Key>
+          <Property Name="AppUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="EMail" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Attendance">
+          <Key>
+            <PropertyRef Name="AttendanceID" />
+          </Key>
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="25" Unicode="true" FixedLength="true" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ClassMeetings" Relationship="AttendanceModel.FK_ClassMeeting_Attendance" FromRole="Attendance" ToRole="ClassMeeting" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="CalendarID" />
+          </Key>
+          <Property Name="CalendarID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ClassMeetings" Relationship="AttendanceModel.FK_ClassMeeting_Calendar" FromRole="Calendar" ToRole="ClassMeeting" />
+        </EntityType>
+        <EntityType Name="ClassMeeting">
+          <Key>
+            <PropertyRef Name="ClassMeetingID" />
+          </Key>
+          <Property Name="ClassMeetingID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CalendarID" Type="Int32" Nullable="false" />
+          <Property Name="SectionID" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="AttendanceID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Attendance" Relationship="AttendanceModel.FK_ClassMeeting_Attendance" FromRole="ClassMeeting" ToRole="Attendance" />
+          <NavigationProperty Name="Calendar" Relationship="AttendanceModel.FK_ClassMeeting_Calendar" FromRole="ClassMeeting" ToRole="Calendar" />
+          <NavigationProperty Name="Section" Relationship="AttendanceModel.FK_ClassMeeting_Section" FromRole="ClassMeeting" ToRole="Section" />
+          <NavigationProperty Name="Student" Relationship="AttendanceModel.FK_ClassMeeting_Student" FromRole="ClassMeeting" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Registration">
+          <Key>
+            <PropertyRef Name="RegistrationID" />
+          </Key>
+          <Property Name="RegistrationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SectionID" Type="Int32" Nullable="false" />
+          <Property Name="StudentID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Section" Relationship="AttendanceModel.FK_Registration_Section" FromRole="Registration" ToRole="Section" />
+          <NavigationProperty Name="Student" Relationship="AttendanceModel.FK_Registration_Student" FromRole="Registration" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Section">
+          <Key>
+            <PropertyRef Name="SectionID" />
+          </Key>
+          <Property Name="SectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="CreditHours" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ClassMeetings" Relationship="AttendanceModel.FK_ClassMeeting_Section" FromRole="Section" ToRole="ClassMeeting" />
+          <NavigationProperty Name="Registrations" Relationship="AttendanceModel.FK_Registration_Section" FromRole="Section" ToRole="Registration" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="StudentID" />
+          </Key>
+          <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ScholarShip" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Enrolled" Type="DateTime" Precision="0" />
+          <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="ClassMeetings" Relationship="AttendanceModel.FK_ClassMeeting_Student" FromRole="Student" ToRole="ClassMeeting" />
+          <NavigationProperty Name="Registrations" Relationship="AttendanceModel.FK_Registration_Student" FromRole="Student" ToRole="Registration" />
+        </EntityType>
+        <Association Name="FK_ClassMeeting_Attendance">
+          <End Role="Attendance" Type="AttendanceModel.Attendance" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Attendance">
+              <PropertyRef Name="AttendanceID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="AttendanceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassMeeting_Calendar">
+          <End Role="Calendar" Type="AttendanceModel.Calendar" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Calendar">
+              <PropertyRef Name="CalendarID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="CalendarID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassMeeting_Section">
+          <End Role="Section" Type="AttendanceModel.Section" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClassMeeting_Student">
+          <End Role="Student" Type="AttendanceModel.Student" Multiplicity="1" />
+          <End Role="ClassMeeting" Type="AttendanceModel.ClassMeeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="ClassMeeting">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Section">
+          <End Role="Section" Type="AttendanceModel.Section" Multiplicity="1" />
+          <End Role="Registration" Type="AttendanceModel.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Section">
+              <PropertyRef Name="SectionID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="SectionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registration_Student">
+          <End Role="Student" Type="AttendanceModel.Student" Multiplicity="1" />
+          <End Role="Registration" Type="AttendanceModel.Registration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Registration">
+              <PropertyRef Name="StudentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AttendanceModelStoreContainer" CdmEntityContainer="AttendanceEntities">
+          <EntitySetMapping Name="AppUsers">
+            <EntityTypeMapping TypeName="AttendanceModel.AppUser">
+              <MappingFragment StoreEntitySet="AppUser">
+                <ScalarProperty Name="AppUserID" ColumnName="AppUserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Attendances">
+            <EntityTypeMapping TypeName="AttendanceModel.Attendance">
+              <MappingFragment StoreEntitySet="Attendance">
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendars">
+            <EntityTypeMapping TypeName="AttendanceModel.Calendar">
+              <MappingFragment StoreEntitySet="Calendar">
+                <ScalarProperty Name="CalendarID" ColumnName="CalendarID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClassMeetings">
+            <EntityTypeMapping TypeName="AttendanceModel.ClassMeeting">
+              <MappingFragment StoreEntitySet="ClassMeeting">
+                <ScalarProperty Name="ClassMeetingID" ColumnName="ClassMeetingID" />
+                <ScalarProperty Name="CalendarID" ColumnName="CalendarID" />
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="AttendanceID" ColumnName="AttendanceID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registrations">
+            <EntityTypeMapping TypeName="AttendanceModel.Registration">
+              <MappingFragment StoreEntitySet="Registration">
+                <ScalarProperty Name="RegistrationID" ColumnName="RegistrationID" />
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sections">
+            <EntityTypeMapping TypeName="AttendanceModel.Section">
+              <MappingFragment StoreEntitySet="Section">
+                <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreditHours" ColumnName="CreditHours" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="AttendanceModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="ScholarShip" ColumnName="ScholarShip" />
+                <ScalarProperty Name="Enrolled" ColumnName="Enrolled" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

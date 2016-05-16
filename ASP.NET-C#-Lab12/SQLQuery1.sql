@@ -1,0 +1,1 @@
+﻿INSERT INTO Student (FirstName, LastName, Enrolled) VALUES ('Jason', 'Henderson', '04/15/2016');

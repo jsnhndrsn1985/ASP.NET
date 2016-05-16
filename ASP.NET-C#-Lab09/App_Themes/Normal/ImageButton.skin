@@ -1,0 +1,4 @@
+﻿
+<asp:ImageButton SkinID="ImageEdit" runat="server" ImageUrl="~/App_Themes/Normal/Images/Edit.png" />
+
+<asp:ImageButton SkinID="ImageList" runat="server" ImageUrl="~/App_Themes/Normal/Images/List.png" />

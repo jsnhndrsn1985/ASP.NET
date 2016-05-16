@@ -1,0 +1,154 @@
+﻿body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #FFFFCC;
+    color: #003300;
+}
+
+img {
+    padding: 2px;
+}
+
+.MasterTable {
+    width: 844px;
+    background-color: #CCFFCC;
+    color: #339966;
+    border-spacing: 0px;
+    border-collapse: collapse;
+}
+
+.MasterHeader {
+    width: 844px;
+    background-color: #CCFFCC;
+    vertical-align: middle;
+}
+
+.MasterHeaderLogo {
+    width: 100px;
+    text-align: center;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #808080;
+}
+
+.MasterHeaderUser {
+    width: 744px;
+    border-style: none none solid none;
+    border-width: 1px;
+    border-color: #808080;
+    vertical-align: middle;
+}
+
+.MasterMenu {
+    border-style: none solid none none;
+    border-width: 1px;
+    border-color: #808080;
+    background-color: #CCFFCC;
+    color: #339966;
+    width: 100px;
+    height: 400px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.MenuItem {
+    padding: 4px;
+    height: 20px;
+    text-align: center;
+}
+
+.MasterBody {
+    background-color: #CCFFCC;
+}
+
+.MasterFooter {
+    background-color: #CCFFCC;
+    border-style: solid none none none;
+    border-width: 1px;
+    border-color: #008000;
+    width: 844px;
+    height: 20px;
+}
+
+.FooterText {
+    font-size: 9px;
+    color: #808080;
+    padding-left: 10px;
+}
+
+#LogoImage {
+    border-style: outset;
+    border-width: thick;
+}
+
+
+.MenuLink {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    color: #339966;
+    Width: 75px;
+    height: 20px;
+}
+
+    .MenuLink:hover {
+        font-weight: bold;
+        font-size: 14px;
+        color: #669999;
+        padding-right: 4px;
+        padding-left: 4px;
+        Width: 75px;
+        height: 20px;
+    }
+
+
+.MenuLinkSelected {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #669999;
+    height: 24px;
+    vertical-align: middle;
+    padding-top: 4px;
+}
+
+.MasterFooterText {
+    font-style: italic;
+    font-size: 12px;
+    color: #669999;
+}
+
+.DefaultMainArea {
+    width: 740px;
+    height: 402px;
+    background-image: url('../../Images/Logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.3;
+    vertical-align: top;
+    text-align: left;
+    background-color: #FFFFCC;
+}
+
+.Button {
+    color: #FFFFCC;
+    background-color: #669999;
+    font-size: 12px;
+    vertical-align: top;
+    
+}
+
+.LabelUp {
+    vertical-align: top
+}
+
+.ListBox {
+    margin-left: 35px;
+    margin-right: 4px
+}
+
+.disabledbtn
+    {
+    background-color:#000000;
+    color:#FFFFFF;
+    }

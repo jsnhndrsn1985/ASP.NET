@@ -1,0 +1,71 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    
+    <title>Attendance System</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table>
+                <tr class="MasterHeader">
+                    <td class="MasterHeaderLogo">
+                        <asp:Image ID="imgLogo" SkinID="LogoImage" runat="server" />
+                    </td>
+                    <td class="MasterHeaderUser">
+                        <div style="float: left">
+                            <h3>Attendance System</h3>
+                        </div>
+                        <div style="float: right">
+                                <asp:RadioButtonList ID="ddlTheme" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlTheme_SelectedIndexChanged"
+                                Style="height: 22px" RepeatDirection="Horizontal">
+                                <asp:ListItem Value="Menu" />
+                                <asp:ListItem Value="Tree" />
+                            </asp:RadioButtonList>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MasterMenu">
+                        <asp:MultiView ID="mvNavigation" ActiveViewIndex="0" runat="server">
+                            <asp:View runat="server">
+                                <%-- Menu goes here --%>
+                                <asp:Menu ID="Menu1" runat="server" CssClass="MasterMenu" DataSourceID="SiteMapDataSource1"></asp:Menu>
+                            </asp:View>
+                            <asp:View ID="View1" runat="server">
+                                <%-- Tree view goes here --%>
+                                <asp:TreeView ID="TreeView1" runat="server" DataSourceID="SiteMapDataSource1" ShowLines="True" OnTreeNodeDataBound="TreeView1_TreeNodeDataBound">
+                                    <HoverNodeStyle Font-Underline="true" ForeColor="#5555DD" />
+                                    <LevelStyles>
+                                            <asp:TreeNodeStyle CssClass="FirstLevelMenuItems" />
+                                    </LevelStyles>
+                                    <NodeStyle CssClass="NavNodeStyle" />
+                                    <ParentNodeStyle Font-Bold="False" />
+                                    <SelectedNodeStyle CssClass="NavSelectedNode" Font-Bold="false" />
+                                </asp:TreeView>
+                             </asp:View>
+                        </asp:MultiView>
+                        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                    </td>
+                    <td class="MasterBody" style="vertical-align: top;">
+                        <asp:Panel ID="panSiteMapPath" CssClass="MasterSiteMapPathPanel" runat="server">
+                            <%-- SitePathMap goes here --%>
+                            <asp:SiteMapPath ID="SiteMapPath1" runat="server"></asp:SiteMapPath>
+                        </asp:Panel>
+                        <br />
+                        <asp:ContentPlaceHolder ID="Body" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="MasterFooter">
+                        <asp:Label ID="lblFooterRight" SkinID="FooterText" Text="Lab 06 -- Jason Henderson" runat="server"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

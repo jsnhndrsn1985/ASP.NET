@@ -1,0 +1,76 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPages_MasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <title>Attendence System</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+                <Scripts>
+                    <asp:ScriptReference Path="~/Scripts/jquery-1.4.1.min.js"></asp:ScriptReference>
+                </Scripts>
+            </asp:ScriptManager>
+            <table>
+                <tr class="MasterHeader">
+                    <td class="MasterHeaderLogo">
+                        <asp:Image ID="imgLogo" SkinID="LogoImage" runat="server" />
+                    </td>
+                    <td class="MasterHeaderUser">
+                        <div style="float: left">
+                            <h3>Attendence System</h3>
+                        </div>
+                        <div style="float: right">
+                            <%--UpdateProgress Control goes here--%>
+                            <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="upBody">
+                                <ProgressTemplate>
+                                    <asp:Image ID="Image1" SkinID="WaitImage" runat="server" />
+                                </ProgressTemplate>
+                            </asp:UpdateProgress>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MasterMenu">
+                        <asp:TreeView ID="trvMenu" DataSourceID="SiteMapDataSource1" runat="server" ImageSet="Arrows" ShowLines="True" OnTreeNodeDataBound="trvMenu_TreeNodeDataBound">
+                            <HoverNodeStyle Font-Underline="True" ForeColor="#5555DD" />
+                            <LevelStyles>
+                                <asp:TreeNodeStyle CssClass="FirstLevelMenuItems" />
+                            </LevelStyles>
+                            <NodeStyle CssClass="NavNodeStyle" />
+                            <ParentNodeStyle Font-Bold="False" />
+                            <SelectedNodeStyle CssClass="NavSelectedNode" />
+                        </asp:TreeView>
+
+                        <%-- SiteMapDataSource goes here --%>
+                        <asp:SiteMapDataSource ID="SiteMapDataSource1" runat="server" />
+                    </td>
+                    <td class="MasterBody" style="vertical-align: top;">
+                        <%-- SitePathMap goes here --%>
+                        <asp:Panel ID="panSiteMapPath" CssClass="MasterSiteMapPathPanel" runat="server">
+                        </asp:Panel>
+                        <br />
+                        <%--UpdatePanel goes here and wraps the ContentPlaceHolder--%>
+                        <asp:UpdatePanel ID="upBody" runat="server">
+                            <ContentTemplate>
+                                <asp:ContentPlaceHolder ID="Body" runat="server">
+                                </asp:ContentPlaceHolder>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="MasterFooter">
+                        <asp:Label ID="lblFooterRight" SkinID="FooterText" Text="Lab 09 - jQuery - Your Name" runat="server"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <asp:ContentPlaceHolder ID="Script" runat="server">
+        </asp:ContentPlaceHolder>
+    </form>
+
+</body>
+</html>

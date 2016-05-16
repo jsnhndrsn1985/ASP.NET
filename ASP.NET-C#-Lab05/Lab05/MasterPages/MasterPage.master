@@ -1,0 +1,62 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPages_MasterPage" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Attendence System</title>
+    <link href="../App_Themes/Green/Styles.css" rel="stylesheet" />
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <table>
+                <tr class="MasterHeader">
+                    <td class="MasterHeaderLogo">
+                        <asp:Image ID="imgLogo" SkinID="LogoImage" runat="server" />
+                    </td>
+                    <td class="MasterHeaderUser">
+                        <div style="float: left">
+                            <asp:ContentPlaceHolder ID="Header" runat="server">
+                                Header
+                            </asp:ContentPlaceHolder>
+                        </div>
+                        <div style="float: right">
+                            <asp:Label ID="lblUser" runat="server" Text="User: Jason Henderson"></asp:Label>
+                            <br />
+                            <asp:RadioButtonList ID="ddlTheme" AutoPostBack="true" runat="server" OnSelectedIndexChanged="ddlTheme_SelectedIndexChanged"
+                                Style="height: 22px" RepeatDirection="Horizontal">
+                                <asp:ListItem Value="Green" />
+                                <asp:ListItem Value="Red" />
+                            </asp:RadioButtonList>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="MasterMenu">
+                        <div class="MenuItem">
+                            <asp:HyperLink ID="lnkMain" SkinID="MenuItemSelected" Text="Main" NavigateUrl="~/Default.aspx" runat="server" />
+                        </div>
+                        <div class="MenuItem">
+                            <asp:HyperLink ID="lnkSections" SkinID="MenuItemSelected" Text="Sections" NavigateUrl="~/Sections.aspx" runat="server" />
+                        </div>
+                    </td>
+                    <td class="MasterBody" style="vertical-align: top;">
+                        <asp:ContentPlaceHolder ID="Body" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="MasterFooter">
+                        <asp:ContentPlaceHolder ID="Footer" runat="server">
+                            CPH Footer
+                        </asp:ContentPlaceHolder>
+                        &nbsp;&nbsp;&nbsp;
+                        <asp:Label ID="lblFooterRight" SkinID="FooterText" Text="Lab 05 - Jason Henderson" runat="server"></asp:Label>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</body>
+</html>

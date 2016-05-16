@@ -1,0 +1,4 @@
+﻿
+<asp:Image SkinID="LogoImage" runat="server" ImageUrl="~/App_Themes/Normal/Images/StudentGreen32.png" />
+
+<asp:Image SkinID="WaitImage" runat="server" ImageUrl="~/App_Themes/Normal/Images/Busy.gif" />
